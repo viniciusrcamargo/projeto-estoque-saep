@@ -10,19 +10,28 @@ router.get('/login', (req, res) => {
 
 
 router.post('/login', async (req, res) => {
-  const { email, senha } = req.body;
-  const result = await bd.query('SELECT * FROM usuarios WHERE email=$1', [email]);
-  
-  if (result.rowCount === 0) {
-    return res.render('login', { error: 'Usuário não encontrado' });
+  try {
+    const { email, senha } = req.body;
+
+    const result = await bd.query('SELECT * FROM usuarios WHERE email = $1', [email]);
+
+    if (result.rows.length === 0) {
+      return res.status(404).send('Usuário não encontrado');
+    }
+
+    const usuario = result.rows[0];
+
+    if (usuario.senha !== senha) {
+      return res.status(401).send('Senha incorreta');
+    }
+
+    req.session.usuario = usuario;
+    res.redirect('/painel');
+  } catch (err) {
+    console.error('Erro no login:', err);
+    res.status(500).send('Erro interno no servidor');
   }
-  const usuario = result.rows[0];
-  // Comparação simples sem criptografia
-  if (senha !== usuario.senha) {
-    return res.render('login', { error: 'Senha incorreta' });
-  }
-  req.session.user = usuario;
-  res.redirect('/painel/listar');
+
 });
 
 
