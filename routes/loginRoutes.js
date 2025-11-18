@@ -9,6 +9,12 @@ router.get('/login', (req, res) => {
 });
 
 
+bd.connect()
+  .then(() => console.log('Conexão OK'))
+  .catch(err => console.error('Erro na conexão:', err.message));
+
+
+
 router.post('/login', async (req, res) => {
   try {
     const { email, senha } = req.body;
