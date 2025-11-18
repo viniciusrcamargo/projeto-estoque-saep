@@ -1,0 +1,22 @@
+<%- include('./layouts/header.ejs', { titulo: 'Acesse o Sistema' }) %>
+
+    <div class="corpo-login">
+        <form method="POST" action="/auth/login" class="form-login">
+            <% if(error){ %>
+                <p style="color:red;">
+                    <%= error %>
+                </p>
+                <% } %>
+                    <div class="container">
+                        <div>
+                            <label for="">Email:</label>
+                            <input type="text" name="email"><br>
+                        </div>
+                        <div>
+                            <label for="">Senha:</label>
+                            <input type="password" name="senha"><br>
+                        </div>
+                        <button type="submit" class="botao-login">Entrar</button>
+                    </div>
+        </form>
+    </div>

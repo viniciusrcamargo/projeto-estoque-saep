@@ -1,0 +1,21 @@
+<%- include('./layouts/header.ejs', { titulo: 'Página Inicial' }) %>
+
+  <div class="painel-container">
+    <nav class="menu-principal">
+      <ul>
+        <li><a href="/produtos/listar">Cadastro de Produtos</a></li>
+        <li><a href="/movimentacoes/listar">Gestão de Estoque</a></li>
+        <li><a href="/painel/logout" class="btn-logout">Sair</a></li>
+      </ul>
+    </nav>
+
+    <section class="welcome-section">
+      <h2>Bem-vindo, <% if (usuario) { %>
+          <%= usuario.email %>
+            <% } %>
+      </h2>
+      <p>Escolha uma das opções no menu para acessar os recursos do sistema.</p>
+    </section>
+  </div>
+
+  <%- include('./layouts/footer.ejs') %>

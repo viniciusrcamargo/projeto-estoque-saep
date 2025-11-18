@@ -1,0 +1,71 @@
+.painel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.menu-principal {
+  margin-bottom: 2.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 14px rgba(120,110,220,0.06);
+  padding: 1rem 2rem;
+  min-width: 240px;
+  position: fixed;
+  top: 1rem;
+}
+
+.menu-principal ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.menu-principal a {
+  text-decoration: none;
+  color: #544ea9;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+  font-size: 1.07rem;
+  display: inline-block;
+}
+
+.menu-principal a:hover,
+.menu-principal a:focus {
+  background: #ece9f7;
+  color: #3b3b4d;
+}
+
+.menu-principal .btn-logout {
+  color: #fff;
+  background: linear-gradient(100deg, #e23c53 65%, #b22a4f 100%);
+  transition: background 0.18s, color 0.2s;
+}
+
+.menu-principal .btn-logout:hover,
+.menu-principal .btn-logout:focus {
+  background: linear-gradient(100deg, #b22a4f 60%, #e23c53 100%);
+  color: #fff;
+}
+
+.welcome-section {
+  text-align: center;
+}
+
+.welcome-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.welcome-section p {
+  color: #626278;
+  font-size: 1.05rem;
+  margin-top: 0.5rem;
+}
