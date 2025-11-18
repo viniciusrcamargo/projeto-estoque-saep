@@ -44,4 +44,4 @@ app.use('/movimentacoes', checkAuth, movRotas);
 
 //[pause]
 
-app.listen(3000, () => console.log("🚀Sistema rodando em http://localhost:3000"));
+export default app;
