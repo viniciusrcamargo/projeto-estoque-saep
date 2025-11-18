@@ -29,7 +29,7 @@ router.post('/login', async (req, res) => {
     res.redirect('/painel');
   } catch (err) {
     console.error('Erro no login:', err);
-    res.status(500).send('Erro interno no servidor', err);
+    res.status(500).send('Erro interno no servidor', err.message);
   }
 
 });
