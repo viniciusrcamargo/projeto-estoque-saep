@@ -11,6 +11,6 @@
   },
   "type": "module",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node teste.js"
   }
 }
