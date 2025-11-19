@@ -1,1 +1,0 @@
-npm install express body-parser express-session bcrypt pg dotenv ejs nodemon
