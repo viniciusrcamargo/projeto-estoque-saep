@@ -29,7 +29,7 @@ app.use(session({
 }));
 
 function checkAuth(req, res, next) {
-  if (req.session.user) return next();
+  if (req.session.usuario) return next();
   res.redirect('/auth/login');
 }
 
