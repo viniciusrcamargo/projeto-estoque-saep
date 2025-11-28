@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import session from 'express-session';
-import bcrypt from 'bcrypt';
+
 import path from 'path';
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
@@ -30,7 +30,7 @@ app.use(session({
 
 function checkAuth(req, res, next) {
   if (req.session.usuario) return next();
-  res.redirect('/auth/login');
+  res.redirect('/api/auth/login');
 }
 
 app.get('/', (req, res) => {
