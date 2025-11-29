@@ -22,11 +22,16 @@ router.get('/novo', async (req, res) => {
 });
 
 router.post('/novo', async (req, res) => {
-  const { nome, estoque_minimo, quantidade } = req.body;
-  if (!nome || !estoque_minimo) return res.redirect('/produtos');
-  await bd.query("INSERT INTO produtos (nome_produto, estoque_minimo, quantidade) VALUES ($1,$2,$3)", 
-  [nome, estoque_minimo || 0, quantidade || 0]);
-  res.redirect('/produtos/listar');
+  try {
+    const { nome, estoque_minimo, quantidade } = req.body;
+    if (!nome || !estoque_minimo) return res.redirect('/produtos');
+    await bd.query("INSERT INTO produtos (nome_produto, estoque_minimo, quantidade) VALUES ($1,$2,$3)", 
+    [nome, estoque_minimo || 0, quantidade || 0]);
+    res.redirect('/produtos/listar');
+  }catch (error) {
+    console.error('Erro ao criar produto:', error);
+    return res.status(500).send('Erro interno no servidor', error.message);
+  }
 });
 
 router.get('/editar/:id', async (req, res) => {
