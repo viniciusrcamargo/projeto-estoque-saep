@@ -32,7 +32,13 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.usuario = usuario;
-    res.redirect('/painel/listar');
+    req.session.save(err => {
+      if (err) {
+        console.error('Erro ao salvar sessão:', err);
+        return res.status(500).send('Erro de sessão');
+      }
+      res.redirect('/painel');
+    });
   } catch (err) {
     console.error('Erro no login:', err);
     res.status(500).send('Erro interno no servidor', err.message);

@@ -21,12 +21,20 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.set('trust proxy', 1); // importante em produção na Vercel
+
 app.use(session({
   secret: process.env.SESSION_SECRET || 'segredo123',
   resave: false,
   saveUninitialized: false,
-  cookie: { maxAge: 30 * 60 * 1000 } // 30 minutos
+  cookie: {
+    maxAge: 30 * 60 * 1000, // 30 minutos
+    httpOnly: true,
+    sameSite: 'lax', // ou 'none' se tiver frontend separado
+    secure: process.env.NODE_ENV === 'production' // true em produção (https)
+  }
 }));
+
 
 function checkAuth(req, res, next) {
   if (req.session.usuario) return next();
