@@ -30,7 +30,7 @@ app.use(session({
 
 function checkAuth(req, res, next) {
   if (req.session.usuario) return next();
-  res.redirect('/api/auth/login');
+  res.redirect('/auth/login');
 }
 
 app.get('/', (req, res) => {
