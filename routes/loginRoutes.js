@@ -37,7 +37,7 @@ router.post('/login', async (req, res) => {
         console.error('Erro ao salvar sessão:', err);
         return res.status(500).send('Erro de sessão');
       }
-      res.redirect('/painel');
+      res.redirect('/painel/listar');
     });
   } catch (err) {
     console.error('Erro no login:', err);
