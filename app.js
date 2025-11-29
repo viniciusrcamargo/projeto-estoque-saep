@@ -48,9 +48,9 @@ app.get('/', (req, res) => {
 });
 
 app.use('/auth', loginRotas);
-app.use('/produtos', checkAuth, produtosRotas);
-app.use('/painel', checkAuth, painelRotas);
-app.use('/movimentacoes', checkAuth, movRotas);
+app.use('/produtos', produtosRotas);
+app.use('/painel', painelRotas);
+app.use('/movimentacoes', movRotas);
 
 //[pause]
 
