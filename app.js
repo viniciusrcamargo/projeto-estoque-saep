@@ -37,8 +37,10 @@ app.use(session({
 
 
 function checkAuth(req, res, next) {
-  if (req.session.usuario) return next();
-  res.redirect('/auth/login');
+  console.log('Sessão no checkAuth:', req.session);
+  console.log('Cookie recebido:', req.headers.cookie);
+  if (req.session && req.session.usuario) return next();
+  return res.redirect('/auth/login');
 }
 
 app.get('/', (req, res) => {
