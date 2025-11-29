@@ -32,7 +32,7 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.usuario = usuario;
-    res.redirect('/api/painel');
+    res.redirect('/painel/listar');
   } catch (err) {
     console.error('Erro no login:', err);
     res.status(500).send('Erro interno no servidor', err.message);
